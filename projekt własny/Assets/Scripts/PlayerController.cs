@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float maxXValue;
     public float minYValue;
     public float maxYValue;
+    public int points;
 
     public int playerHP;
 

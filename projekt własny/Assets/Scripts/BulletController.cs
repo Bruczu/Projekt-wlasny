@@ -7,7 +7,7 @@ public class BulletController : MonoBehaviour
     public float BulletSpeed;
     public Rigidbody2D rb;
 
-    public float destroyValue = 9f;
+    public float destroyValue;
 
     void Update()
     {
@@ -16,7 +16,7 @@ public class BulletController : MonoBehaviour
     }
     void DestroyAfterLeftScreen()
     {
-        if (transform.position.x > destroyValue)
+        if (Mathf.Abs(transform.position.x) > destroyValue)
         {
             Destroy(gameObject);
         }
