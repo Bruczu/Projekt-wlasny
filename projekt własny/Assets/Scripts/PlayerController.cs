@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     public float minYValue;
     public float maxYValue;
 
+    public int playerHP;
+
     public GameObject playerBulletPrefab;
     public Transform gunEndPosition;
 
@@ -68,5 +70,11 @@ public class PlayerController : MonoBehaviour
             //audioSource.PlayOneShot(audioClip);
             timeSinceLastShot = 0f;
         }
+    }
+    public void HittedByBullet()
+    {
+        //GameManager.uiManager.DisableHpSprite(hp);
+        playerHP -= 1;
+        Debug.Log("Zosta³eœ trafiony.");
     }
 }
