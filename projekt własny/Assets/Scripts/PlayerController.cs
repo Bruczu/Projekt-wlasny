@@ -14,24 +14,51 @@ public class PlayerController : MonoBehaviour
     public int playerHP;
 
     public GameObject playerBulletPrefab;
-    public Transform gunEndPosition;
+    public Transform gunEndPositionR;
+    public Transform gunEndPositionL;
+    //
+    [SerializeField] private SpriteRenderer playerSprite;
+    [SerializeField] private Sprite turnedRight;
+    [SerializeField] private Sprite turnedLeft;
+    public bool lastShotSide = false;
+    //
 
     public float gunFireRate;
     public float timeSinceLastShot;
     // Start is called before the first frame update
     void Start()
     {
-        
+        EnemyController.playerController = this;
     }
 
     // Update is called once per frame
     void Update()
     {
         PlayerMovement();
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.X))
         {
-            GunShoot();
+            GunShootR();
+            lastShotSide = false;
         }
+        else
+        {
+            if (Input.GetKey(KeyCode.Z))
+            {
+                GunShootL();
+                lastShotSide = true;
+            }
+        }
+
+        //
+        if (lastShotSide == false)
+        {
+            playerSprite.sprite = turnedRight;
+        }
+        else
+        {
+            playerSprite.sprite = turnedLeft;
+        }
+        //
     }
 
     void PlayerMovement()
@@ -61,13 +88,24 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector2(transform.position.x, minYValue);
         }
     }
-    void GunShoot()
+    void GunShootR()
     {
         timeSinceLastShot += Time.deltaTime;
 
         if (timeSinceLastShot >= gunFireRate)
         {
-            Instantiate(playerBulletPrefab, gunEndPosition.position, Quaternion.identity);
+            Instantiate(playerBulletPrefab, gunEndPositionR.position, Quaternion.identity);
+            //audioSource.PlayOneShot(audioClip);
+            timeSinceLastShot = 0f;
+        }
+    }
+    void GunShootL()
+    {
+        timeSinceLastShot += Time.deltaTime;
+
+        if (timeSinceLastShot >= gunFireRate)
+        {
+            Instantiate(playerBulletPrefab, gunEndPositionL.position, Quaternion.Euler(0, 180, 0));
             //audioSource.PlayOneShot(audioClip);
             timeSinceLastShot = 0f;
         }
@@ -76,6 +114,6 @@ public class PlayerController : MonoBehaviour
     {
         //GameManager.uiManager.DisableHpSprite(hp);
         playerHP -= 1;
-        Debug.Log("Zosta³eœ trafiony.");
+        //Debug.Log("Zosta³eœ trafiony.");
     }
 }
