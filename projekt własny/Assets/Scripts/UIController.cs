@@ -6,30 +6,37 @@ using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
-    /*public GameObject hp1;
-    public GameObject hp2;
-    public GameObject hp3;
-    public GameObject hp4;
-    public GameObject hp5;
+    public static EndGameController endGameController;
 
-    public List<GameObject> hpPointsList = new List<GameObject>();
-    */
     public PlayerController playerController;
     public TextMeshProUGUI pointsValue;
+    public TextMeshProUGUI playerHP;
 
     private bool isPaused;
     public GameObject pausePanel;
     public GameObject confirmationPanel;
+    //
+    public GameObject endGamePanel;
+    public GameObject wonText;
+    public GameObject lostText;
+    //
 
     void Start()
     {
+        EndGameController.uicontroller = this;
         pausePanel.SetActive(false);
         confirmationPanel.SetActive(false);
+        //
+        endGamePanel.SetActive(false);
+        wonText.SetActive(false);
+        lostText.SetActive(false);
+        //
         Time.timeScale = 1;
     }
     void Update()
     {
         pointsValue.text = "Points: " + playerController.points.ToString();
+        playerHP.text = "HP: " + playerController.playerHP.ToString();
 
         if (Input.GetButtonDown("Cancel"))
         {
@@ -65,5 +72,24 @@ public class UIController : MonoBehaviour
     {
         SceneManager.LoadScene("Menu");
     }
-
+    public void PlayAgain()
+    {
+        SceneManager.LoadScene("Game");
+    }
+    //
+    public void GoEndMenu()
+    {
+        Time.timeScale = 0;
+        endGamePanel.SetActive(true);
+        if (endGameController.playerWon == true)
+        {
+            wonText.SetActive(true);
+        }
+        else
+        {
+            lostText.SetActive(true);
+        }
+    }
+    
+    //
 }

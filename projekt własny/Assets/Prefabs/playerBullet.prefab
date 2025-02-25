@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf7d707f048af5f489250b09e62b950f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletSpeed: 10
+  BulletSpeed: 20
   rb: {fileID: 0}
   destroyValue: 10
 --- !u!50 &2811393393110842707

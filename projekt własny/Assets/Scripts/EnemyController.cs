@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public float speed, fireRate, switchHeight;
+    public float speed, fireRate, switchHeightUp, switchHeightDown;
     public int enemyHP;
     public static PlayerController playerController;
     public Transform enemyGunEnd;
     public GameObject bulletPrefab;
     private float timeSinceLastShot = 0f;
+    public bool goingFromRight;
 
     public int movePhase;
 
@@ -30,17 +31,17 @@ public class EnemyController : MonoBehaviour
                 transform.Translate(Vector2.up * speed * Time.deltaTime, Space.World);
         }
 
-        if (transform.position.y >= switchHeight)
+        if (transform.position.y >= switchHeightUp)
         {
             StartCoroutine(GoDown()); 
         }        
 
-        if (transform.position.y <= -switchHeight)
+        if (transform.position.y <= switchHeightDown)
         {
             StartCoroutine(GoUp());
         }
 
-        if (transform.position.x < 7f)
+        if (transform.position.x < 7f || transform.position.x > -7f)
         {
             Shoot();
         }
@@ -59,11 +60,19 @@ public class EnemyController : MonoBehaviour
         }
         if (movePhase == 2)
         {
-            transform.Translate(Vector2.left * speed * Time.deltaTime, Space.World);
-            yield return new WaitForSeconds(0.5f);
-            transform.Translate(Vector2.up * speed * Time.deltaTime, Space.World);
-            yield return new WaitForSeconds(0.005f);
-            movePhase = 3;
+            if (goingFromRight == true)
+            {
+                transform.Translate(Vector2.left * speed * Time.deltaTime, Space.World);
+                yield return new WaitForSeconds(0.2f);
+                movePhase = 3;
+            }
+            else
+            {
+                transform.Translate(Vector2.right * speed * Time.deltaTime, Space.World);
+                yield return new WaitForSeconds(0.2f);
+                movePhase = 3;
+            }
+
         }
     }
 
@@ -75,11 +84,18 @@ public class EnemyController : MonoBehaviour
         }
         if (movePhase == 4)
         {
-            transform.Translate(Vector2.left * speed * Time.deltaTime , Space.World);
-            yield return new WaitForSeconds(0.5f);
-            transform.Translate(Vector2.down * speed * Time.deltaTime , Space.World);
-            yield return new WaitForSeconds(0.005f);
-            movePhase = 1;
+            if (goingFromRight == true)
+            {
+                transform.Translate(Vector2.left * speed * Time.deltaTime, Space.World);
+                yield return new WaitForSeconds(0.2f);
+                movePhase = 1;
+            }
+            else
+            {
+                transform.Translate(Vector2.right * speed * Time.deltaTime, Space.World);
+                yield return new WaitForSeconds(0.2f);
+                movePhase = 1;
+            }
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -95,7 +111,7 @@ public class EnemyController : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
            //Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
-            //GameManager.playerController.HittedByBullet();
+            playerController.HittedByBullet();
             Destroy(gameObject);
         }
     }
@@ -105,8 +121,16 @@ public class EnemyController : MonoBehaviour
 
         if (timeSinceLastShot >= fireRate)
         {
-            Instantiate(bulletPrefab, enemyGunEnd.position, Quaternion.Euler(0, 180, 0));
-            timeSinceLastShot = 0;
+            if (goingFromRight == true)
+            {
+                Instantiate(bulletPrefab, enemyGunEnd.position, Quaternion.Euler(0, 180, 0));
+                timeSinceLastShot = 0;
+            }
+            else
+            {
+                Instantiate(bulletPrefab, enemyGunEnd.position, Quaternion.identity);
+                timeSinceLastShot = 0;
+            }
         }
     }
 }

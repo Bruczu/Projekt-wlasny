@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemyPrefab;
+    public GameObject enemyPrefabR, enemyPrefabL;
     public float spawnRate;
     public float timeSinceLastSpawn;
 
     public List<GameObject> spawnedEnemies = new List<GameObject>();
-    // Start is called before the first frame update
+    public bool fromRight;
+    public float spawnPlaceRX, spawnPlaceY, spawnPlaceLX;
+
     void Start()
     {
         
@@ -22,13 +24,27 @@ public class EnemySpawner : MonoBehaviour
 
         if (timeSinceLastSpawn >= spawnRate)
         {
-            SpawnEnemy();
+            if (fromRight == true)
+            {
+                SpawnEnemyR();
+            }
+            if (fromRight == false)
+            {
+                SpawnEnemyL();
+            }
         }
     }
-    void SpawnEnemy()
+    void SpawnEnemyR()
     {
-        Vector2 spawnPosition = new Vector2(8, 6);
-        GameObject spawnedEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity, this.transform);
+        Vector2 spawnPositionR = new Vector2(spawnPlaceRX, spawnPlaceY);
+        GameObject spawnedEnemy = Instantiate(enemyPrefabR, spawnPositionR, Quaternion.identity, this.transform);
+        timeSinceLastSpawn = 0f;
+        spawnedEnemies.Add(spawnedEnemy);
+    }
+    void SpawnEnemyL()
+    {
+        Vector2 spawnPositionL = new Vector2(spawnPlaceLX, spawnPlaceY);
+        GameObject spawnedEnemy = Instantiate(enemyPrefabL, spawnPositionL, Quaternion.identity, this.transform);
         timeSinceLastSpawn = 0f;
         spawnedEnemies.Add(spawnedEnemy);
     }

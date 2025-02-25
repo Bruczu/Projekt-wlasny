@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         EnemyController.playerController = this;
+        EnemyBulletController.playerController = this;
+        EndGameController.playerController = this;
     }
 
     // Update is called once per frame
@@ -49,7 +51,6 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        //
         if (lastShotSide == false)
         {
             playerSprite.sprite = turnedRight;
@@ -58,7 +59,6 @@ public class PlayerController : MonoBehaviour
         {
             playerSprite.sprite = turnedLeft;
         }
-        //
     }
 
     void PlayerMovement()
