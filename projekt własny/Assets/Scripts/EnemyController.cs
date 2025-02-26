@@ -36,12 +36,12 @@ public class EnemyController : MonoBehaviour
             StartCoroutine(GoUp());
         }
 
-        if (transform.position.x < 7f || transform.position.x > -7f)
+        if (transform.position.x < 7f || transform.position.x > -7f) 
         {
             Shoot();
         }
 
-        if (transform.position.x < -10f)
+        if (Mathf.Abs(transform.position.x) > 10f)
         {
             Destroy(gameObject);
         }

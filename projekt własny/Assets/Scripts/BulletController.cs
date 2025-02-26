@@ -11,7 +11,7 @@ public class BulletController : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(Vector2.right * BulletSpeed * Time.deltaTime);
+        transform.Translate(BulletSpeed * Time.deltaTime * Vector2.right);
         DestroyAfterLeftScreen();
     }
     void DestroyAfterLeftScreen()

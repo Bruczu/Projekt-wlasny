@@ -12,12 +12,6 @@ public class EnemySpawner : MonoBehaviour
     public bool fromRight;
     public float spawnPlaceRX, spawnPlaceY, spawnPlaceLX;
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         timeSinceLastSpawn += Time.deltaTime;

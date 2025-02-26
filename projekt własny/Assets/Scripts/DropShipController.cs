@@ -20,7 +20,7 @@ public class DropShipController : MonoBehaviour
         if (collision.gameObject.CompareTag("Bullet"))
         {
             //Instantiate(bulletExplosionEffect, transform.position, Quaternion.identity);
-            playerController.points += 10;
+            //playerController.points += 10;
             shipHP--;
             ShipState();
         }
@@ -29,6 +29,7 @@ public class DropShipController : MonoBehaviour
     {
         if (shipHP >= 0)
         {
+            //Instantiate(dropPrefab, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

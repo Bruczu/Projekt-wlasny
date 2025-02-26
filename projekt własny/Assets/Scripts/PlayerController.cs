@@ -25,11 +25,14 @@ public class PlayerController : MonoBehaviour
 
     public float gunFireRate;
     public float timeSinceLastShot;
-    // Start is called before the first frame update
+
+    public static DropController dropController;
+
     void Start()
     {
         EnemyController.playerController = this;
         DropShipController.playerController = this;
+        DropController.playerController = this;
         EnemyBulletController.playerController = this;
         EndGameController.playerController = this;
     }
@@ -115,8 +118,17 @@ public class PlayerController : MonoBehaviour
     }
     public void HittedByBullet()
     {
-        //GameManager.uiManager.DisableHpSprite(hp);
-        playerHP -= 1;
-        //Debug.Log("Zosta³eœ trafiony.");
+        /*if (dropController.shieldIsActive == true)
+        {
+
+        }*/
+        //else
+        //{
+            //GameManager.uiManager.DisableHpSprite(hp);
+            playerHP -= 1;
+            //Debug.Log("Zosta³eœ trafiony.");
+        //}
+
     }
+
 }
