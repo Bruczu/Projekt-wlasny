@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         EnemyController.playerController = this;
+        DropShipController.playerController = this;
         EnemyBulletController.playerController = this;
         EndGameController.playerController = this;
     }
@@ -65,7 +66,9 @@ public class PlayerController : MonoBehaviour
     {
         float horizontalInputValue = Input.GetAxis("Horizontal");
         float vertivalInputValue = Input.GetAxis("Vertical");
-        Vector2 movementVector = new Vector2 (horizontalInputValue, vertivalInputValue) * playerSpeed * Time.deltaTime;
+        //
+        Vector2 movementVector =  playerSpeed * Time.deltaTime * new Vector2(horizontalInputValue, vertivalInputValue);
+        //
         transform.Translate(movementVector);
 
         if (transform.position.x > maxXValue)

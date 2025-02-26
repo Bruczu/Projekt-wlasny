@@ -2,37 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBulletController : MonoBehaviour
+public class DropShipController : MonoBehaviour
 {
-    public float BulletSpeed;
-    public Rigidbody2D rb;
-    public float destroyValue;
     public static PlayerController playerController;
+    public int shipHP = 2;
+    public float shipSpeed = 1;
 
-    void Update()
-    {
-        transform.Translate(BulletSpeed * Time.deltaTime * Vector2.right);
-        DestroyAfterLeftScreen();
-    }
-    void DestroyAfterLeftScreen()
-    {
-        if (Mathf.Abs(transform.position.x) > destroyValue)
-        {
-            Destroy(gameObject);
-        }
-    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             //Instantiate(bulletExplosionEffect, transform.position, Quaternion.identity);
             playerController.HittedByBullet();
-            Destroy(gameObject);
+            shipHP --;
+            ShipState();
         }
         if (collision.gameObject.CompareTag("Bullet"))
         {
             //Instantiate(bulletExplosionEffect, transform.position, Quaternion.identity);
-            playerController.points +=  10;
+            playerController.points += 10;
+            shipHP--;
+            ShipState();
+        }
+    }
+    void ShipState()
+    {
+        if (shipHP >= 0)
+        {
             Destroy(gameObject);
         }
     }

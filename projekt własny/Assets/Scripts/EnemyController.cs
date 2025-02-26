@@ -14,21 +14,16 @@ public class EnemyController : MonoBehaviour
 
     public int movePhase;
 
-    void Start()
-    {
-        
-    }
-
 
     void Update()
     {
         if (movePhase == 1)
         {
-                transform.Translate(Vector2.down * speed * Time.deltaTime, Space.World);
+                transform.Translate(speed * Time.deltaTime * Vector2.down, Space.World);
         }
         if (movePhase == 3)
         {
-                transform.Translate(Vector2.up * speed * Time.deltaTime, Space.World);
+                transform.Translate(speed * Time.deltaTime * Vector2.up, Space.World);
         }
 
         if (transform.position.y >= switchHeightUp)
@@ -62,13 +57,13 @@ public class EnemyController : MonoBehaviour
         {
             if (goingFromRight == true)
             {
-                transform.Translate(Vector2.left * speed * Time.deltaTime, Space.World);
+                transform.Translate(speed * Time.deltaTime * Vector2.left, Space.World);
                 yield return new WaitForSeconds(0.2f);
                 movePhase = 3;
             }
             else
             {
-                transform.Translate(Vector2.right * speed * Time.deltaTime, Space.World);
+                transform.Translate(speed * Time.deltaTime * Vector2.right, Space.World);
                 yield return new WaitForSeconds(0.2f);
                 movePhase = 3;
             }
@@ -86,13 +81,13 @@ public class EnemyController : MonoBehaviour
         {
             if (goingFromRight == true)
             {
-                transform.Translate(Vector2.left * speed * Time.deltaTime, Space.World);
+                transform.Translate(speed * Time.deltaTime * Vector2.left, Space.World);
                 yield return new WaitForSeconds(0.2f);
                 movePhase = 1;
             }
             else
             {
-                transform.Translate(Vector2.right * speed * Time.deltaTime, Space.World);
+                transform.Translate(speed * Time.deltaTime * Vector2.right, Space.World);
                 yield return new WaitForSeconds(0.2f);
                 movePhase = 1;
             }
@@ -100,15 +95,15 @@ public class EnemyController : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Bullet")
+        if (collision.gameObject.CompareTag("Bullet"))
         {
             //Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
-            playerController.points = playerController.points + 100;
+            playerController.points += 100;
             //GameManager.enemySpawner.enemy_destroyed();
             Destroy(gameObject);
         }
 
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
            //Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
             playerController.HittedByBullet();
