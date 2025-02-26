@@ -1286,10 +1286,13 @@ MonoBehaviour:
   shieldIsActive: 0
   DMGBoostIsActive: 0
   PiercingBulletsIsActive: 0
+  IFrameIsActive: 0
   shieldTime: 0
   DMGBoostTime: 0
   PiercingBulletsTime: 0
+  IFrameTime: 0
   howLongBoost: 3
+  howLongIFrame: 0.3
   shieldSprite: {fileID: 1545714027}
   DMGBoostSprite: {fileID: 2126377794}
   PiercingBulletsSprite: {fileID: 1406399717}
@@ -3778,7 +3781,7 @@ GameObject:
   - component: {fileID: 2133440502}
   - component: {fileID: 2133440501}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3791,7 +3794,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2133440500}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1

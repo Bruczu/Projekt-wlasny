@@ -121,7 +121,7 @@ public class PlayerController : MonoBehaviour
     }
     public void HittedByBullet()
     {
-        if (dropController.shieldIsActive == true)
+        if ((dropController.shieldIsActive == true) || (dropController.IFrameIsActive == true))
         {
 
         }
@@ -129,6 +129,7 @@ public class PlayerController : MonoBehaviour
         {
             //GameManager.uiManager.DisableHpSprite(hp);
             playerHP -= 1;
+            dropController.IFrameActive();
             //Debug.Log("Zosta³eœ trafiony.");
         }
 

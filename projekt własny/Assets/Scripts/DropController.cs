@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class DropController : MonoBehaviour
 {
-    public bool shieldIsActive, DMGBoostIsActive, PiercingBulletsIsActive;
-    public float shieldTime, DMGBoostTime, PiercingBulletsTime;
-    public float howLongBoost;
+    public bool shieldIsActive, DMGBoostIsActive, PiercingBulletsIsActive, IFrameIsActive;
+    public float shieldTime, DMGBoostTime, PiercingBulletsTime, IFrameTime;
+    public float howLongBoost, howLongIFrame;
     public static PlayerController playerController;
     public GameObject shieldSprite, DMGBoostSprite, PiercingBulletsSprite;
 
@@ -25,6 +25,16 @@ public class DropController : MonoBehaviour
 
     void Update()
     {
+        if (IFrameIsActive == true)
+        {
+            IFrameTime += Time.deltaTime;
+            if (IFrameTime >= howLongIFrame)
+            {
+                IFrameIsActive = false;
+                shieldSprite.SetActive(false);
+                IFrameTime = 0;
+            }
+        }
         if (shieldIsActive == true)
         {
             shieldTime += Time.deltaTime;
@@ -78,5 +88,10 @@ public class DropController : MonoBehaviour
     {
         PiercingBulletsIsActive = true;
         PiercingBulletsSprite.SetActive(true);
+    }
+    public void IFrameActive()
+    {
+        IFrameIsActive = true;
+        shieldSprite.SetActive(true);
     }
 }
