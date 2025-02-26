@@ -41,11 +41,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7942304555635197701}
   - component: {fileID: 2298821811862446594}
-  - component: {fileID: 3654448067074059803}
   - component: {fileID: -4649061540890996354}
   - component: {fileID: -8930117709848521264}
+  - component: {fileID: 8117364010468966341}
   m_Layer: 0
-  m_Name: EnemyR
+  m_Name: EnemyR2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119,27 +119,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3654448067074059803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1115496525757312281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a80442436c93bcf4da1cacc694537e34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
-  fireRate: 2
-  switchHeightUp: 3
-  switchHeightDown: -4
-  enemyHP: 1
-  enemyGunEnd: {fileID: 4900939322975056884}
-  bulletPrefab: {fileID: 1966186553011413563, guid: 8c0c9f5f2797ea44b8528cde67f4b444, type: 3}
-  goingFromRight: 1
-  movePhase: 1
 --- !u!61 &-4649061540890996354
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -212,3 +191,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &8117364010468966341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115496525757312281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60e8fa0fe3778d44fa6b0b37b8f43373, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movingRight: 0
+  speed: 3
+  timeSinceLastShot: 0
+  fireRate: 2
+  enemyHP: 2
+  bulletPrefab: {fileID: 1966186553011413563, guid: 8c0c9f5f2797ea44b8528cde67f4b444, type: 3}
+  enemyGunEnd: {fileID: 4900939322975056884}

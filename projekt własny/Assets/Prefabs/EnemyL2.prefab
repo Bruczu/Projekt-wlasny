@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1098157333572659345}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.6, y: 0, z: 0}
+  m_LocalPosition: {x: 0.6, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -41,11 +41,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7942304555635197701}
   - component: {fileID: 2298821811862446594}
-  - component: {fileID: 3654448067074059803}
   - component: {fileID: -4649061540890996354}
-  - component: {fileID: -8930117709848521264}
+  - component: {fileID: 4287755139752379525}
+  - component: {fileID: -7911769007157819670}
   m_Layer: 0
-  m_Name: EnemyR
+  m_Name: EnemyL2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,7 +108,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 594a2767d8e90bc4f843cb73e5e7eda5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cc1421cc4c7021f47b6bc446e9885fc8, type: 3}
   m_Color: {r: 0.051886797, g: 1, b: 0.9915772, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -119,27 +119,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3654448067074059803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1115496525757312281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a80442436c93bcf4da1cacc694537e34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
-  fireRate: 2
-  switchHeightUp: 3
-  switchHeightDown: -4
-  enemyHP: 1
-  enemyGunEnd: {fileID: 4900939322975056884}
-  bulletPrefab: {fileID: 1966186553011413563, guid: 8c0c9f5f2797ea44b8528cde67f4b444, type: 3}
-  goingFromRight: 1
-  movePhase: 1
 --- !u!61 &-4649061540890996354
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -185,7 +164,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!50 &-8930117709848521264
+--- !u!50 &4287755139752379525
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -212,3 +191,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &-7911769007157819670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115496525757312281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60e8fa0fe3778d44fa6b0b37b8f43373, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movingRight: 1
+  speed: 3
+  timeSinceLastShot: 0
+  fireRate: 2
+  enemyHP: 2
+  bulletPrefab: {fileID: 1966186553011413563, guid: 8c0c9f5f2797ea44b8528cde67f4b444, type: 3}
+  enemyGunEnd: {fileID: 4900939322975056884}

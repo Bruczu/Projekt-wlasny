@@ -7,6 +7,7 @@ public class EnemyController : MonoBehaviour
     public float speed, fireRate, switchHeightUp, switchHeightDown;
     public int enemyHP;
     public static PlayerController playerController;
+    public static DropController dropController;
     public Transform enemyGunEnd;
     public GameObject bulletPrefab;
     private float timeSinceLastShot = 0f;
@@ -19,29 +20,29 @@ public class EnemyController : MonoBehaviour
     {
         if (movePhase == 1)
         {
-                transform.Translate(speed * Time.deltaTime * Vector2.down, Space.World);
+            transform.Translate(speed * Time.deltaTime * Vector2.down, Space.World);
         }
         if (movePhase == 3)
         {
-                transform.Translate(speed * Time.deltaTime * Vector2.up, Space.World);
+            transform.Translate(speed * Time.deltaTime * Vector2.up, Space.World);
         }
 
         if (transform.position.y >= switchHeightUp)
         {
-            StartCoroutine(GoDown()); 
-        }        
+            StartCoroutine(GoDown());
+        }
 
         if (transform.position.y <= switchHeightDown)
         {
             StartCoroutine(GoUp());
         }
 
-        if (transform.position.x < 7f || transform.position.x > -7f) 
+        if (transform.position.x < 7f || transform.position.x > -7f)
         {
             Shoot();
         }
 
-        if (Mathf.Abs(transform.position.x) > 10f)
+        if (Mathf.Abs(transform.position.x) > 12f)
         {
             Destroy(gameObject);
         }
@@ -97,15 +98,21 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            //Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
-            playerController.points += 100;
-            //GameManager.enemySpawner.enemy_destroyed();
-            Destroy(gameObject);
+            if (dropController.DMGBoostIsActive == true)
+            {
+                enemyHP -= 2;
+                ShipState();
+            }
+            else
+            {
+                enemyHP--;
+                ShipState();
+            }
         }
 
         if (collision.gameObject.CompareTag("Player"))
         {
-           //Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
+            //Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
             playerController.HittedByBullet();
             Destroy(gameObject);
         }
@@ -126,6 +133,16 @@ public class EnemyController : MonoBehaviour
                 Instantiate(bulletPrefab, enemyGunEnd.position, Quaternion.identity);
                 timeSinceLastShot = 0;
             }
+        }
+    }
+    void ShipState()
+    {
+        if (enemyHP <= 0)
+        {
+            playerController.points += 100;
+            Destroy(gameObject);
+            //Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
+            //GameManager.enemySpawner.enemy_destroyed();
         }
     }
 }

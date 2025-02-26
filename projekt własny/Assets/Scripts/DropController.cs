@@ -8,45 +8,75 @@ public class DropController : MonoBehaviour
     public float shieldTime, DMGBoostTime, PiercingBulletsTime;
     public float howLongBoost;
     public static PlayerController playerController;
+    public GameObject shieldSprite, DMGBoostSprite, PiercingBulletsSprite;
 
     void Start()
     {
         PlayerController.dropController = this;
+        DropMovementController.dropController = this;
+        DropShipController.dropController = this;
+        BulletController.dropController= this;
+        EnemyController.dropController = this;
+        Enemy2Controller.dropController = this;
+        shieldSprite.SetActive(false);
+        DMGBoostSprite.SetActive(false);
+        PiercingBulletsSprite.SetActive(false);
     }
 
-
+    void Update()
+    {
+        if (shieldIsActive == true)
+        {
+            shieldTime += Time.deltaTime;
+            if (shieldTime >= howLongBoost)
+            {
+                shieldIsActive = false;
+                shieldSprite.SetActive(false);
+                shieldTime = 0;
+            }
+        }
+        if (DMGBoostIsActive == true)
+        {
+            DMGBoostTime += Time.deltaTime;
+            if (DMGBoostTime >= howLongBoost)
+            {
+                DMGBoostIsActive = false;
+                DMGBoostSprite.SetActive(false);
+                DMGBoostTime = 0;
+            }
+        }
+        if (PiercingBulletsIsActive == true)
+        {
+            PiercingBulletsTime += Time.deltaTime;
+            if (PiercingBulletsTime >= howLongBoost)
+            {
+                PiercingBulletsIsActive = false;
+                PiercingBulletsSprite.SetActive(false);
+                PiercingBulletsTime = 0;
+            }
+        }
+    }
     public void HealthUp()
     {
         playerController.playerHP+= 2;
+        if (playerController.playerHP > playerController.maxPlayerHP)
+        {
+            playerController.playerHP = playerController.maxPlayerHP;
+        }
     }
     public void ShieldActive()
     {
         shieldIsActive = true;
-        shieldTime += Time.deltaTime;
-        if (shieldTime == howLongBoost)
-        {
-            shieldIsActive = false;
-            shieldTime = 0;
-        }
+        shieldSprite.SetActive(true);
     }
     public void DMGBoost()
     {
         DMGBoostIsActive = true;
-        DMGBoostTime += Time.deltaTime;
-        if (DMGBoostTime == howLongBoost)
-        {
-            DMGBoostIsActive = false;
-            DMGBoostTime = 0;
-        }
+        DMGBoostSprite.SetActive(true);
     }
     public void PiercingBullets()
     {
         PiercingBulletsIsActive = true;
-        PiercingBulletsTime += Time.deltaTime;
-        if (PiercingBulletsTime == howLongBoost)
-        {
-            PiercingBulletsIsActive = false;
-            PiercingBulletsTime = 0;
-        }
+        PiercingBulletsSprite.SetActive(true);
     }
 }

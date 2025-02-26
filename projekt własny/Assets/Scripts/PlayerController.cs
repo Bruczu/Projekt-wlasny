@@ -10,8 +10,10 @@ public class PlayerController : MonoBehaviour
     public float minYValue;
     public float maxYValue;
     public int points;
+    public int pointsNeeded;
 
     public int playerHP;
+    public int maxPlayerHP;
 
     public GameObject playerBulletPrefab;
     public Transform gunEndPositionR;
@@ -35,6 +37,7 @@ public class PlayerController : MonoBehaviour
         DropController.playerController = this;
         EnemyBulletController.playerController = this;
         EndGameController.playerController = this;
+        Enemy2Controller.playerController = this;
     }
 
     // Update is called once per frame
@@ -118,16 +121,16 @@ public class PlayerController : MonoBehaviour
     }
     public void HittedByBullet()
     {
-        /*if (dropController.shieldIsActive == true)
+        if (dropController.shieldIsActive == true)
         {
 
-        }*/
-        //else
-        //{
+        }
+        else
+        {
             //GameManager.uiManager.DisableHpSprite(hp);
             playerHP -= 1;
             //Debug.Log("Zosta³eœ trafiony.");
-        //}
+        }
 
     }
 

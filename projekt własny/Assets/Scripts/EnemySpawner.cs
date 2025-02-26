@@ -11,20 +11,23 @@ public class EnemySpawner : MonoBehaviour
     public List<GameObject> spawnedEnemies = new List<GameObject>();
     public bool fromRight;
     public float spawnPlaceRX, spawnPlaceY, spawnPlaceLX;
+    public static EndGameController endGameController;
 
     void Update()
     {
-        timeSinceLastSpawn += Time.deltaTime;
-
-        if (timeSinceLastSpawn >= spawnRate)
+        if (endGameController.gamePhase == 1)
         {
-            if (fromRight == true)
+            timeSinceLastSpawn += Time.deltaTime;
+            if (timeSinceLastSpawn >= spawnRate)
             {
-                SpawnEnemyR();
-            }
-            if (fromRight == false)
-            {
-                SpawnEnemyL();
+                if (fromRight == true)
+                {
+                    SpawnEnemyR();
+                }
+                if (fromRight == false)
+                {
+                    SpawnEnemyL();
+                }
             }
         }
     }

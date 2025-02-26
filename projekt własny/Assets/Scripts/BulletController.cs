@@ -9,6 +9,8 @@ public class BulletController : MonoBehaviour
 
     public float destroyValue;
 
+    public static DropController dropController;
+
     void Update()
     {
         transform.Translate(BulletSpeed * Time.deltaTime * Vector2.right);
@@ -23,6 +25,13 @@ public class BulletController : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Destroy(gameObject);
+        if (dropController.PiercingBulletsIsActive == true)
+        {
+
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }
