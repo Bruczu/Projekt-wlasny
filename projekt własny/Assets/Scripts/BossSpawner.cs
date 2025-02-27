@@ -8,13 +8,12 @@ public class BossSpawner : MonoBehaviour
     public GameObject bossPrefab;
     public float spawnPlaceX, spawnPlaceY;
     public bool bossSpawned;
-    // Start is called before the first frame update
+    public int bossHP;
     void Start()
     {
-        
+        UIController.bossSpawner = this;
+        BossIdleMovement.bossSpawner = this;
     }
-
-    // Update is called once per frame
     void Update()
     {
         if ((endGameController.gamePhase == 3) && (bossSpawned == false))
@@ -25,7 +24,7 @@ public class BossSpawner : MonoBehaviour
     void SpawnBoss()
     {
         Vector2 spawnPosition = new Vector2(spawnPlaceX, spawnPlaceY);
-        GameObject spawnedEnemy = Instantiate(bossPrefab, spawnPosition, Quaternion.identity, this.transform);
+        Instantiate(bossPrefab, spawnPosition, Quaternion.identity, this.transform);
         bossSpawned = true;
     }
 

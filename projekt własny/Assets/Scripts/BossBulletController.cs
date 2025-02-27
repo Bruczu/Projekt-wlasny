@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BossBulletController : MonoBehaviour
 {
+    public static PlayerController playerController;
     public float bulletLife = 1f;
     public float rotation = 0f;
     public float speed = 1f;
@@ -30,5 +31,18 @@ public class BossBulletController : MonoBehaviour
         float x = timer * speed * transform.right.x;
         float y = timer * speed * transform.right.y;
         return new Vector2(x+spawnPoint.x, y+spawnPoint.y);
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            //Instantiate(bulletExplosionEffect, transform.position, Quaternion.identity);
+            playerController.HittedByBullet();
+            Destroy(gameObject);
+        }
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+
+        }
     }
 }

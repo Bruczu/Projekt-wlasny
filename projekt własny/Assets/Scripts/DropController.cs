@@ -18,6 +18,7 @@ public class DropController : MonoBehaviour
         BulletController.dropController= this;
         EnemyController.dropController = this;
         Enemy2Controller.dropController = this;
+        BossIdleMovement.dropController = this;
         shieldSprite.SetActive(false);
         DMGBoostSprite.SetActive(false);
         PiercingBulletsSprite.SetActive(false);

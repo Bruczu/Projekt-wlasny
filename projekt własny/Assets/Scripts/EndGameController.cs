@@ -27,6 +27,7 @@ public class EndGameController : MonoBehaviour
         EnemySpawner.endGameController = this;
         EnemySpawner2.endGameController = this;
         BossSpawner.endGameController = this;
+        BossIdleMovement.endGameController = this;
         gamePhase = 0;
         Countdown1.SetActive(false);
         Countdown2.SetActive(false);
@@ -47,9 +48,8 @@ public class EndGameController : MonoBehaviour
         {
             uicontroller.GoEndMenu();
         }
-        if (playerController.points >= playerController.pointsNeeded)
+        if (playerWon == true)
         {
-            playerWon = true;
             uicontroller.GoEndMenu();
         }
     }

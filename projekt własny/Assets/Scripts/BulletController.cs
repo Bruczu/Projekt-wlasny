@@ -29,6 +29,10 @@ public class BulletController : MonoBehaviour
         {
 
         }
+        if (collision.gameObject.CompareTag("BossBullet"))
+        {
+
+        }
         else
         {
             Destroy(gameObject);

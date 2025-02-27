@@ -177,8 +177,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1966186553011413563, guid: 4c9cd8c5835e11847a709fb7924e13c9, type: 3}
   bulletLife: 2.5
   speed: 5
-  spinSpeed: 0.2
-  spinDirection: 0
+  spinSpeed: 0.25
   spawnerType: 1
   fireRate: 0.05
 --- !u!1 &1588535462592362942
@@ -282,7 +281,6 @@ MonoBehaviour:
   bulletLife: 2.5
   speed: 5
   spinSpeed: 0.2
-  spinDirection: 0
   spawnerType: 0
   fireRate: 0.05
 --- !u!1 &2172910502263802624
@@ -341,7 +339,8 @@ MonoBehaviour:
   arrivalDurationMax: 2.5
   bossArrivalSpeed: 4
   phaseDuration: 0
-  phaseDurationMax: 0
+  phaseDurationMax: 5
+  phaseDurationMaxShort: 1
 --- !u!1 &2291344196148032160
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,7 +442,6 @@ MonoBehaviour:
   bulletLife: 2.5
   speed: 5
   spinSpeed: 0.2
-  spinDirection: 0
   spawnerType: 2
   fireRate: 0.05
 --- !u!1 &2680280760836279109
@@ -547,7 +545,6 @@ MonoBehaviour:
   bulletLife: 2.5
   speed: 5
   spinSpeed: 0.2
-  spinDirection: 0
   spawnerType: 2
   fireRate: 0.05
 --- !u!1 &3923996759622228835
@@ -651,7 +648,6 @@ MonoBehaviour:
   bulletLife: 2.5
   speed: 5
   spinSpeed: 0.2
-  spinDirection: 0
   spawnerType: 2
   fireRate: 0.05
 --- !u!1 &4008370537678062616
@@ -755,7 +751,6 @@ MonoBehaviour:
   bulletLife: 2.5
   speed: 5
   spinSpeed: 0.2
-  spinDirection: 0
   spawnerType: 2
   fireRate: 0.05
 --- !u!1 &4126171770916380870
@@ -858,8 +853,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1966186553011413563, guid: 4c9cd8c5835e11847a709fb7924e13c9, type: 3}
   bulletLife: 2.5
   speed: 5
-  spinSpeed: 0.2
-  spinDirection: 0
+  spinSpeed: 0.25
   spawnerType: 1
   fireRate: 0.05
 --- !u!1 &4450963032697394595
@@ -963,7 +957,6 @@ MonoBehaviour:
   bulletLife: 2.5
   speed: 5
   spinSpeed: 0.2
-  spinDirection: 0
   spawnerType: 2
   fireRate: 0.05
 --- !u!1 &4834816179594632556
@@ -1067,7 +1060,6 @@ MonoBehaviour:
   bulletLife: 2.5
   speed: 5
   spinSpeed: 0.2
-  spinDirection: 0
   spawnerType: 0
   fireRate: 0.05
 --- !u!1 &4960614627281669852
@@ -1171,7 +1163,6 @@ MonoBehaviour:
   bulletLife: 2.5
   speed: 5
   spinSpeed: 0.2
-  spinDirection: 0
   spawnerType: 2
   fireRate: 0.05
 --- !u!1 &5053773445082833288
@@ -1275,7 +1266,6 @@ MonoBehaviour:
   bulletLife: 2.5
   speed: 5
   spinSpeed: 0.2
-  spinDirection: 0
   spawnerType: 0
   fireRate: 0.05
 --- !u!1 &5181932508466398551
@@ -1379,7 +1369,6 @@ MonoBehaviour:
   bulletLife: 2.5
   speed: 5
   spinSpeed: 0.2
-  spinDirection: 0
   spawnerType: 2
   fireRate: 0.05
 --- !u!1 &6176112363359962861
@@ -1522,7 +1511,6 @@ MonoBehaviour:
   bulletLife: 2.5
   speed: 5
   spinSpeed: 0.2
-  spinDirection: 0
   spawnerType: 0
   fireRate: 0.05
 --- !u!1 &6375979656435821340
@@ -1626,7 +1614,6 @@ MonoBehaviour:
   bulletLife: 2.5
   speed: 5
   spinSpeed: 0.2
-  spinDirection: 0
   spawnerType: 0
   fireRate: 0.05
 --- !u!1 &6525404018194093582
@@ -1730,7 +1717,6 @@ MonoBehaviour:
   bulletLife: 2.5
   speed: 5
   spinSpeed: 0.2
-  spinDirection: 0
   spawnerType: 0
   fireRate: 0.05
 --- !u!1 &7101005198824308609
@@ -1745,6 +1731,7 @@ GameObject:
   - component: {fileID: 1339621331632872612}
   - component: {fileID: 2722003900401528985}
   - component: {fileID: 7782187565829780476}
+  - component: {fileID: 1241971824797135142}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -1870,6 +1857,33 @@ MonoBehaviour:
   bossIdleSpeed: 0.6
   obstacleUp: {fileID: 2021493847464629453}
   obstacleDown: {fileID: 4088026764911785794}
+--- !u!50 &1241971824797135142
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7101005198824308609}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &7749415049861627722
 GameObject:
   m_ObjectHideFlags: 0
@@ -1971,7 +1985,6 @@ MonoBehaviour:
   bulletLife: 2.5
   speed: 5
   spinSpeed: 0.2
-  spinDirection: 0
   spawnerType: 0
   fireRate: 0.05
 --- !u!1 &7966303472574342781
@@ -2109,7 +2122,6 @@ MonoBehaviour:
   bulletLife: 2.5
   speed: 5
   spinSpeed: 0.2
-  spinDirection: 0
   spawnerType: 2
   fireRate: 0.05
 --- !u!1 &8482995225417803632
@@ -2290,7 +2302,6 @@ MonoBehaviour:
   bulletLife: 2.5
   speed: 5
   spinSpeed: 0.2
-  spinDirection: 0
   spawnerType: 0
   fireRate: 0.05
 --- !u!1 &8580609457475606565
@@ -2432,7 +2443,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1966186553011413563, guid: 4c9cd8c5835e11847a709fb7924e13c9, type: 3}
   bulletLife: 2.5
   speed: 5
-  spinSpeed: 0.2
-  spinDirection: 0
+  spinSpeed: 0.25
   spawnerType: 1
   fireRate: 0.05

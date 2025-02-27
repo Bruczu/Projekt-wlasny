@@ -8,12 +8,12 @@ public class BossIdleMovement : MonoBehaviour
     public float bossIdleSpeed;
     public Transform obstacleUp;
     public Transform obstacleDown;
-    void Start()
-    {
-        
-    }
 
-    
+    public static PlayerController playerController;
+    public static DropController dropController;
+    public static BossSpawner bossSpawner;
+    public static EndGameController endGameController;
+
     void Update()
     {
         UpAndDown();
@@ -38,4 +38,36 @@ public class BossIdleMovement : MonoBehaviour
 
         }
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            if (dropController.DMGBoostIsActive == true)
+            {
+                bossSpawner.bossHP -= 2;
+                BossState();
+            }
+            else
+            {
+                bossSpawner.bossHP--;
+                BossState();
+            }
+        }
+
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            playerController.HittedByBullet();
+            bossSpawner.bossHP--;
+            BossState();
+        }
+    }
+    void BossState()
+    {
+        if (bossSpawner.bossHP <= 0)
+        {
+            endGameController.playerWon = true;
+            Destroy(gameObject);
+        }
+    }
+
 }

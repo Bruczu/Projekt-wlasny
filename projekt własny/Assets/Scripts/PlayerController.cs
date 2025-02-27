@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public float minYValue;
     public float maxYValue;
     public int points;
-    public int pointsNeeded;
+    //public int pointsNeeded;
 
     public int playerHP;
     public int maxPlayerHP;
@@ -44,6 +44,8 @@ public class PlayerController : MonoBehaviour
         EnemyBulletController.playerController = this;
         EndGameController.playerController = this;
         Enemy2Controller.playerController = this;
+        BossIdleMovement.playerController = this;
+        BossBulletController.playerController = this;
         playerCanMove = false;
         
     }

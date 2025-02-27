@@ -13,6 +13,7 @@ public class BossController : MonoBehaviour
 
     public float phaseDuration;
     public float phaseDurationMax;
+    public float phaseDurationMaxShort;
 
 
     void Start()
@@ -30,6 +31,7 @@ public class BossController : MonoBehaviour
         {
             BossArrival();
         }
+        BossPhaseChange();
     }
     public void BossArrival()
     {
@@ -46,16 +48,32 @@ public class BossController : MonoBehaviour
     }
     public void BossPhaseChange()
     {
-        phaseDuration += Time.deltaTime;
-        if (phaseDuration >= phaseDurationMax)
+        if ((bossPhase == 1) || (bossPhase == 2) || (bossPhase == 3))
         {
-
+            phaseDuration += Time.deltaTime;
+            if (phaseDuration >= phaseDurationMax)
+            {
+                phaseDuration = 0;
+                bossPhase++;
+            }
         }
-        else
+        if ((bossPhase == 4) || (bossPhase == 5) || (bossPhase == 6))
         {
-
+            phaseDuration += Time.deltaTime;
+            if (phaseDuration >= phaseDurationMaxShort)
+            {
+                phaseDuration = 0;
+                bossPhase++;
+            }
+        }
+        if (bossPhase == 7)
+        {
+            phaseDuration += Time.deltaTime;
+            if (phaseDuration >= phaseDurationMaxShort)
+            {
+                phaseDuration = 0;
+                bossPhase = 1;
+            }
         }
     }
-
-
 }

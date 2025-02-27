@@ -5,14 +5,13 @@ using UnityEngine;
 
 public class BossBulletSpawner : MonoBehaviour
 {
-    enum SpawnerType { Straight, Spin, Straight2}
+    enum SpawnerType { Straight, Spin, Straight2 }
 
     //[Header("Bullet Attributes")]
     public GameObject bulletPrefab;
     public float bulletLife = 1f;
     public float speed = 1f;
     public float spinSpeed;
-    public bool spinDirection;
 
     //[Header("Spawner Attributes)]
     [SerializeField] private SpawnerType spawnerType;
@@ -28,46 +27,12 @@ public class BossBulletSpawner : MonoBehaviour
         timer += Time.deltaTime;
         if (bossController.bossPhase == 0)
         {
-            
-        }
-        if ((bossController.bossPhase == 1 ) && (spawnerType == SpawnerType.Spin))
-        {
-            if (spinDirection == false)
-            {
-                transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z + spinSpeed);
-                if (timer >= fireRate)
-                {
-                    Shoot();
-                    timer = 0;
-                }
-            }
-            if (spinDirection == true)
-            {
-                transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z - spinSpeed);
-                if (timer >= fireRate)
-                {
-                    Shoot();
-                    timer = 0;
-                }
-            }
-        }
-        if (bossController.bossPhase == 2 && (spawnerType == SpawnerType.Straight))
-        {
-            if (timer >= fireRate)
-            {
-                Shoot();
-                timer = 0;
-            }
-        }
-        if (bossController.bossPhase == 3 && (spawnerType == SpawnerType.Straight2))
-        {
-            if (timer >= fireRate)
-            {
-                Shoot();
-                timer = 0;
-            }
-        }
 
+        }
+        Spin1();
+        Spin2();
+        Straight1();
+        Straight2();
     }
 
     private void Shoot()
@@ -80,4 +45,52 @@ public class BossBulletSpawner : MonoBehaviour
             spawnedBullet.transform.rotation = transform.rotation;
         }
     }
+    private void Spin1()
+    {
+        if (((bossController.bossPhase == 1) || (bossController.bossPhase == 3)) && (spawnerType == SpawnerType.Spin))
+        {
+            transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z + spinSpeed);
+            if (timer >= fireRate)
+            {
+                Shoot();
+                timer = 0;
+            }
+        }
+    }
+
+    private void Spin2()
+    {
+        if ((bossController.bossPhase == 2) && (spawnerType == SpawnerType.Spin))
+        {
+            transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z - spinSpeed);
+            if (timer >= fireRate)
+            {
+                Shoot();
+                timer = 0;
+            }
+        }
+    }
+    private void Straight1()
+    {
+        if (((bossController.bossPhase == 4) || (bossController.bossPhase == 6)) && (spawnerType == SpawnerType.Straight))
+        {
+            if (timer >= fireRate)
+            {
+                Shoot();
+                timer = 0;
+            }
+        }
+    }
+    private void Straight2()
+    {
+        if (((bossController.bossPhase == 5) || (bossController.bossPhase == 7)) && (spawnerType == SpawnerType.Straight2))
+        {
+            if (timer >= fireRate)
+            {
+                Shoot();
+                timer = 0;
+            }
+        }
+    }
 }
+

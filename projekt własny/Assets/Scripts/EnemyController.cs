@@ -114,7 +114,8 @@ public class EnemyController : MonoBehaviour
         {
             //Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
             playerController.HittedByBullet();
-            Destroy(gameObject);
+            enemyHP--;
+            ShipState();
         }
     }
     void Shoot()

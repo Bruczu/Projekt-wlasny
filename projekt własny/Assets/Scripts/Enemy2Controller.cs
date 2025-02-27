@@ -54,12 +54,12 @@ public class Enemy2Controller : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player"))
         {
-            //Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
             playerController.HittedByBullet();
-            Destroy(gameObject);
+            enemyHP--;
+            ShipState();
         }
     }
-    void Shoot()
+    /*void Shoot()
     {
         timeSinceLastShot += Time.deltaTime;
 
@@ -76,15 +76,13 @@ public class Enemy2Controller : MonoBehaviour
                 timeSinceLastShot = 0;
             }
         }
-    }
+    }*/
     void ShipState()
     {
         if (enemyHP <= 0)
         {
             playerController.points += 100;
             Destroy(gameObject);
-            //Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
-            //GameManager.enemySpawner.enemy_destroyed();
         }
     }
 }

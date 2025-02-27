@@ -7,30 +7,32 @@ using UnityEngine.SceneManagement;
 public class UIController : MonoBehaviour
 {
     public static EndGameController endGameController;
-
+    public static BossSpawner bossSpawner;
     public PlayerController playerController;
     public TextMeshProUGUI pointsValue;
     public TextMeshProUGUI playerHP;
+    public TextMeshProUGUI bossHPUIText;
+    public GameObject bossHPUI;
 
     private bool isPaused;
     public GameObject pausePanel;
     public GameObject confirmationPanel;
-    //
     public GameObject endGamePanel;
     public GameObject wonText;
     public GameObject lostText;
-    //
+
+
 
     void Start()
     {
         EndGameController.uicontroller = this;
         pausePanel.SetActive(false);
         confirmationPanel.SetActive(false);
-        //
         endGamePanel.SetActive(false);
         wonText.SetActive(false);
         lostText.SetActive(false);
-        //
+        bossHPUI.SetActive(false);
+
         Time.timeScale = 1;
     }
     void Update()
@@ -48,6 +50,12 @@ public class UIController : MonoBehaviour
             {
                 PauseGame();
             }
+        }
+
+        if (bossSpawner.bossSpawned == true)
+        {
+            bossHPUI.SetActive(true);
+            bossHPUIText.text = bossSpawner.bossHP.ToString();
         }
     }
     public void PauseGame()
@@ -76,7 +84,6 @@ public class UIController : MonoBehaviour
     {
         SceneManager.LoadScene("Game");
     }
-    //
     public void GoEndMenu()
     {
         Time.timeScale = 0;
@@ -90,6 +97,4 @@ public class UIController : MonoBehaviour
             lostText.SetActive(true);
         }
     }
-    
-    //
 }
