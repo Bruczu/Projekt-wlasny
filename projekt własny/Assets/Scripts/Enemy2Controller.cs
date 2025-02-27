@@ -13,7 +13,7 @@ public class Enemy2Controller : MonoBehaviour
     public Transform enemyGunEnd;
     void Start()
     {
-        int[] speedOptions = { 2, 3, 4 };
+        int[] speedOptions = { 2, 3, 4, 5, 6 };
         speed = speedOptions[Random.Range(0, speedOptions.Length)];
     }
     void Update()
@@ -26,10 +26,10 @@ public class Enemy2Controller : MonoBehaviour
         {
             transform.Translate(speed * Time.deltaTime * Vector2.left, Space.World);
         }
-        if (transform.position.x < 7f || transform.position.x > -7f)
+        /*if (transform.position.x < 7f || transform.position.x > -7f)
         {
             Shoot();
-        }
+        }*/
 
         if (Mathf.Abs(transform.position.x) > 12f)
         {

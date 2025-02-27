@@ -37,7 +37,7 @@ public class EnemyController : MonoBehaviour
             StartCoroutine(GoUp());
         }
 
-        if (transform.position.x < 7f || transform.position.x > -7f)
+        if (transform.position.x < 8f || transform.position.x > -8f)
         {
             Shoot();
         }
@@ -59,13 +59,13 @@ public class EnemyController : MonoBehaviour
             if (goingFromRight == true)
             {
                 transform.Translate(speed * Time.deltaTime * Vector2.left, Space.World);
-                yield return new WaitForSeconds(0.2f);
+                yield return new WaitForSeconds(0.8f);
                 movePhase = 3;
             }
             else
             {
                 transform.Translate(speed * Time.deltaTime * Vector2.right, Space.World);
-                yield return new WaitForSeconds(0.2f);
+                yield return new WaitForSeconds(0.8f);
                 movePhase = 3;
             }
 
@@ -83,13 +83,13 @@ public class EnemyController : MonoBehaviour
             if (goingFromRight == true)
             {
                 transform.Translate(speed * Time.deltaTime * Vector2.left, Space.World);
-                yield return new WaitForSeconds(0.2f);
+                yield return new WaitForSeconds(0.8f);
                 movePhase = 1;
             }
             else
             {
                 transform.Translate(speed * Time.deltaTime * Vector2.right, Space.World);
-                yield return new WaitForSeconds(0.2f);
+                yield return new WaitForSeconds(0.8f);
                 movePhase = 1;
             }
         }

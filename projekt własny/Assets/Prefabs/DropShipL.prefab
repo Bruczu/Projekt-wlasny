@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0.36320752, b: 0.36320752, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 7a290742511387348a3d195c00f04ea9, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -103,8 +103,8 @@ MonoBehaviour:
   shipSpeed: 1
   goingRight: 1
   dropShipSprite: {fileID: 1933419400723584274}
-  turnedRight: {fileID: 21300000, guid: cc1421cc4c7021f47b6bc446e9885fc8, type: 3}
-  turnedLeft: {fileID: 21300000, guid: 594a2767d8e90bc4f843cb73e5e7eda5, type: 3}
+  turnedRight: {fileID: 21300000, guid: 7a290742511387348a3d195c00f04ea9, type: 3}
+  turnedLeft: {fileID: 21300000, guid: 372ee2871b721c342b5ba3466cb912eb, type: 3}
   HealthUpPrefab: {fileID: 4321198750658901278, guid: 59b738d1f342d6a4d811c9f0a9c56154, type: 3}
   ShieldPrefab: {fileID: 4321198750658901278, guid: bd66a2ff780c9d940ad333a3309a68a4, type: 3}
   DMGBoostPrefab: {fileID: 4321198750658901278, guid: 35369a5fb10044a449a66bd51e74aab4, type: 3}
@@ -145,7 +145,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2.5, y: 2.5}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

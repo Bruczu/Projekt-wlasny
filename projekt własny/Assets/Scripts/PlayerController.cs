@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float playerSpeed;
+    public float playerArrivalSpeed;
     public float minXValue;
     public float maxXValue;
     public float minYValue;
@@ -30,6 +31,11 @@ public class PlayerController : MonoBehaviour
 
     public static DropController dropController;
 
+    public bool playerCanMove;
+    public bool playerArrived;
+    public float arrivalDuration;
+    public float arrivalDurationMax;
+
     void Start()
     {
         EnemyController.playerController = this;
@@ -38,12 +44,21 @@ public class PlayerController : MonoBehaviour
         EnemyBulletController.playerController = this;
         EndGameController.playerController = this;
         Enemy2Controller.playerController = this;
+        playerCanMove = false;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        PlayerMovement();
+        if (playerCanMove == false)
+        {
+            PlayerArrival();
+        }
+        if (playerCanMove == true)
+        {
+            PlayerMovement();
+        }
         if (Input.GetKey(KeyCode.X))
         {
             GunShootR();
@@ -133,6 +148,19 @@ public class PlayerController : MonoBehaviour
             //Debug.Log("Zosta³eœ trafiony.");
         }
 
+    }
+    public void PlayerArrival()
+    {
+        arrivalDuration += Time.deltaTime;
+        if (arrivalDuration >= arrivalDurationMax)
+        {
+            playerCanMove = true;
+            playerArrived = true;
+        }
+        else
+        {
+            transform.Translate(playerArrivalSpeed * Time.deltaTime * Vector2.right, Space.World);
+        }
     }
 
 }
