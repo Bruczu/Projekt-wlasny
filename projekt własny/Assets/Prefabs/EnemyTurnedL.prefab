@@ -135,7 +135,7 @@ MonoBehaviour:
   fireRate: 2
   switchHeightUp: 3
   switchHeightDown: -4
-  enemyHP: 1
+  enemyHP: 2
   enemyGunEnd: {fileID: 4900939322975056884}
   bulletPrefab: {fileID: 1966186553011413563, guid: 8c0c9f5f2797ea44b8528cde67f4b444, type: 3}
   goingFromRight: 1

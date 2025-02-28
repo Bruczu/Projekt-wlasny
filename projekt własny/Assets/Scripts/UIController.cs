@@ -55,7 +55,7 @@ public class UIController : MonoBehaviour
         if (bossSpawner.bossSpawned == true)
         {
             bossHPUI.SetActive(true);
-            bossHPUIText.text = bossSpawner.bossHP.ToString();
+            bossHPUIText.text = "BOSS HP: " + bossSpawner.bossHP.ToString();
         }
     }
     public void PauseGame()

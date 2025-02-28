@@ -295,7 +295,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 154.75763, y: 0, z: 0, w: 0}
+  m_margin: {x: 129.47516, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2909,7 +2909,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Enemy2PrefabR: {fileID: 1115496525757312281, guid: 3f136051440e6da478fd8003d53c2eb5, type: 3}
   Enemy2PrefabL: {fileID: 1115496525757312281, guid: 5e2d415df59f6dc4ab75014aa5b73489, type: 3}
-  spawnRate: 3
+  spawnRate: 2
   minYAxisSpawnValue: -4.4
   maxYAxisSpawnValue: 3.4
   XAxisSpawnValue: 0
@@ -3496,7 +3496,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Enemy2PrefabR: {fileID: 1115496525757312281, guid: 3f136051440e6da478fd8003d53c2eb5, type: 3}
   Enemy2PrefabL: {fileID: 1115496525757312281, guid: 5e2d415df59f6dc4ab75014aa5b73489, type: 3}
-  spawnRate: 3
+  spawnRate: 2
   minYAxisSpawnValue: -4.4
   maxYAxisSpawnValue: 3.4
   XAxisSpawnValue: 0
@@ -3987,7 +3987,7 @@ MonoBehaviour:
   spawnPlaceX: -10
   spawnPlaceY: -0.8
   bossSpawned: 0
-  bossHP: 200
+  bossHP: 100
 --- !u!1 &1795238897
 GameObject:
   m_ObjectHideFlags: 0
